@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 14 - Accessibility Best Practices</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: 10px;
+      background: #000;
+      color: #fff;
+      display: block;
+    }
+
+    nav a {
+      margin-right: 15px;
+    }
+
+    input, button, select {
+      margin: 10px 0;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Skip Navigation Link for Screen Readers -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <h1>Accessible Website Example</h1>
+  </header>
+
+  <!-- ✅ Keyboard-Friendly Navigation -->
+  <nav role="navigation" aria-label="Main Navigation">
+    <a href="#home">Home</a>
+    <a href="#form">Form</a>
+    <a href="#images">Images</a>
+  </nav>
+
+  <!-- ✅ Main Content Area -->
+  <main id="main" role="main">
+    
+    <section id="home">
+      <h2>Welcome</h2>
+      <p>This site demonstrates best practices in accessibility using HTML.</p>
+    </section>
+
+    <!-- ✅ Accessible Form Fields -->
+    <section id="form">
+      <h2>Contact Form</h2>
+      <form>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="country">Country:</label><br>
+        <select id="country" name="country">
+          <option value="india">India</option>
+          <option value="usa">USA</option>
+          <option value="uk">UK</option>
+        </select><br>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <!-- ✅ Images with Descriptive alt Text -->
+    <section id="images">
+      <h2>Accessible Images</h2>
+      <img src="https://www.pixelstalk.net/wp-content/uploads/2016/06/Nature-Wallpaper.jpg" alt="A placeholder image showing scenic view of nature">
+      <img src="https://th.bing.com/th/id/OIP.Um9qgiO04Mar6yak_8cBFAHaE7?rs=1&pid=ImgDetMain&cb=idpwebp2&o=7&rm=3" alt="Student studying in a library">
+    </section>
+
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 Accessibility Demo Page</p>
+  </footer>
+
+</body>
+</html>
