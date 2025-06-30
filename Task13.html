@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 13 - Gallery with Lightbox</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    figure {
+      width: 200px;
+      margin: 0;
+    }
+    img {
+      width: 100%;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    figcaption {
+      margin-top: 5px;
+    }
+
+    /* Lightbox overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 5px solid white;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Photo Gallery with Lightbox</h2>
+
+  <div class="gallery">
+    <figure>
+      <img src="https://thewowstyle.com/wp-content/uploads/2015/01/nature-images..jpg" alt="Nature 1" onclick="openLightbox(this)">
+      <figcaption>Nature View 1</figcaption>
+    </figure>
+    <figure>
+      <img src="https://wallpapercave.com/wp/wp4088642.jpg" alt="Nature 2" onclick="openLightbox(this)">
+      <figcaption>Nature View 2</figcaption>
+    </figure>
+    <figure>
+      <img src="https://th.bing.com/th/id/OIP.GvntOdvz80txbfbW4rz2kAHaEo?rs=1&pid=ImgDetMain&cb=idpwebp2&o=7&rm=3" alt="Nature 3" onclick="openLightbox(this)">
+      <figcaption>Nature View 3</figcaption>
+    </figure>
+  </div>
+
+  <!-- Lightbox container -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="Full Image">
+  </div>
+
+  <script>
+    function openLightbox(img) {
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      lightboxImg.src = img.src;
+      lightbox.style.display = "flex";
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
