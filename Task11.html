@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 11 - Canvas Drawing</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    canvas {
+      border: 1px solid #000;
+      cursor: crosshair;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Canvas Drawing App</h1>
+
+  <canvas id="drawingCanvas" width="500" height="400"></canvas><br>
+  <button onclick="clearCanvas()">Clear Canvas</button>
+
+  <label for="color">Choose Color:</label>
+<input type="color" id="color" value="#000000">
+
+
+  <script>
+    const canvas = document.getElementById("drawingCanvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = document.getElementById("color").value;
+
+
+    let drawing = false;
+
+    canvas.addEventListener("mousedown", () => drawing = true);
+    canvas.addEventListener("mouseup", () => drawing = false);
+    canvas.addEventListener("mouseout", () => drawing = false);
+
+    canvas.addEventListener("mousemove", draw);
+
+    function draw(event) {
+      if (!drawing) return;
+
+      const x = event.offsetX;
+      const y = event.offsetY;
+
+      ctx.fillStyle = "black";
+      ctx.beginPath();
+      ctx.arc(x, y, 2, 0, Math.PI * 2); // small dot
+      ctx.fill();
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  </script>
+
+</body>
+</html>
