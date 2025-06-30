@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 12 - Local Storage To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+    }
+    ul {
+      padding-left: 0;
+    }
+    li {
+      list-style: none;
+      background: #f2f2f2;
+      padding: 10px;
+      margin: 5px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .actions button {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>To-Do List</h1>
+
+  <input type="text" id="taskInput" placeholder="Enter a task">
+  <button onclick="addTask()">Add Task</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    function renderTasks() {
+      const list = document.getElementById("taskList");
+      list.innerHTML = "";
+      tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span contenteditable="false" id="task-${index}">${task}</span>
+          <div class="actions">
+            <button onclick="editTask(${index})">Edit</button>
+            <button onclick="deleteTask(${index})">Delete</button>
+          </div>
+        `;
+        list.appendChild(li);
+      });
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    function addTask() {
+      const input = document.getElementById("taskInput");
+      const task = input.value.trim();
+      if (task !== "") {
+        tasks.push(task);
+        input.value = "";
+        renderTasks();
+      }
+    }
+
+    function editTask(index) {
+      const taskSpan = document.getElementById(`task-${index}`);
+      const isEditable = taskSpan.getAttribute("contenteditable") === "true";
+
+      if (!isEditable) {
+        taskSpan.setAttribute("contenteditable", "true");
+        taskSpan.focus();
+      } else {
+        taskSpan.setAttribute("contenteditable", "false");
+        tasks[index] = taskSpan.innerText.trim();
+        renderTasks();
+      }
+    }
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      renderTasks();
+    }
+
+    // Initial render
+    renderTasks();
+  </script>
+
+</body>
+</html>
