@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 7 - Responsive Design</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .main {
+      flex: 2;
+      padding: 10px;
+    }
+
+    .sidebar {
+      flex: 1;
+      padding: 10px;
+      background-color: #f4f4f4;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 600px;
+    }
+
+    /* Tablet View */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      body {
+        font-size: 16px;
+      }
+    }
+
+    /* Mobile View */
+    @media (max-width: 480px) {
+      header, footer {
+        font-size: 16px;
+        padding: 0.5em;
+      }
+      body {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Responsive Layout</h1>
+  </header>
+
+  <div class="container">
+    <div class="main">
+      <h2>Main Content</h2>
+      <p>This layout adjusts based on the screen size.</p>
+      <img src="https://thewowstyle.com/wp-content/uploads/2015/01/nature-images..jpg" alt="Nature image">
+    </div>
+    <div class="sidebar">
+      <h3>Sidebar</h3>
+      <p>This is a responsive sidebar.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Responsive Design Demo</p>
+  </footer>
+
+</body>
+</html>
