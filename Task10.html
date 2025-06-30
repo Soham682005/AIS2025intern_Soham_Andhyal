@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 10 - Accessibility</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #000;
+      color: #821010;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <h1>Accessible Web Page</h1>
+  </header>
+
+  <nav role="navigation" aria-label="Main Navigation">
+    <ul>
+      <li><a href="#home" tabindex="0">Home</a></li>
+      <li><a href="#about" tabindex="0">About</a></li>
+      <li><a href="#contact" tabindex="0">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="mainContent" role="main">
+    <section id="home">
+      <h2>Welcome</h2>
+      <p>This page is designed with accessibility in mind.</p>
+      <img src="https://via.placeholder.com/300" alt="Sample placeholder image">
+    </section>
+
+    <section id="about">
+      <h2>About Us</h2>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <input type="submit" value="Submit">
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 Accessible Web Page</p>
+  </footer>
+
+  <!-- You can add JavaScript here if needed -->
+  <script>
+    // For this task, JavaScript is not necessary but could go here.
+  </script>
+
+</body>
+</html>
